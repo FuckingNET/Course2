@@ -7,12 +7,7 @@ import java.util.*;
 
 @Service
 public class JavaQuestionService implements QuestionService {
-    private Set<Question> questions = new HashSet<>();
-    private final Random random;
-
-    public JavaQuestionService(Random random) {
-        this.random = random;
-    }
+    private final Set<Question> questions = new HashSet<>();
 
     @Override
     public Question add(String question, String answer) {
@@ -40,6 +35,7 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question getRandomQuestion() {
+        Random random = new Random();
         List<Question> questionList = new ArrayList<>(questions);
         return questionList.get(random.nextInt(questionList.size()));
     }
