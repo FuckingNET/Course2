@@ -6,28 +6,24 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
-    private final Random random;
-
     private final QuestionService questionService;
 
-    public ExaminerServiceImpl(Random random, QuestionService questionService) {
-        this.random = random;
+    public ExaminerServiceImpl(QuestionService questionService) {
         this.questionService = questionService;
     }
 
     @Override
     public Collection<Question> getQuestions(int amount) {
         if (amount < 1) {
-            throw new QuestionAmountException("");
+            throw new QuestionAmountException("количество не может быть отрицательным");
         }
 
         if (amount > questionService.getAll().size()) {
-            throw new QuestionAmountException("");
+            throw new QuestionAmountException("список содержит меньше вопросов, чем запрашивается ");
         }
 
         Set<Question> result = new HashSet<>();
