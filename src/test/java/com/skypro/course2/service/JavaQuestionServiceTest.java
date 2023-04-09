@@ -44,6 +44,7 @@ class JavaQuestionServiceTest {
     @Test
     void getAll() {
         Question question1 = new Question("1", "22");
+        questionService.add(question1);
 
         Collection<Question> expected = Set.of(question1);
 
