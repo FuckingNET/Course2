@@ -7,7 +7,12 @@ import java.util.*;
 
 @Service
 public class JavaQuestionService implements QuestionService {
-    private final Set<Question> questions = new HashSet<>();
+    Question question1 = new Question("1", "22");
+    private final Set<Question> questions;
+
+    public JavaQuestionService() {
+        questions = new HashSet<>(Set.of(question1));
+    }
 
     @Override
     public Question add(String question, String answer) {
